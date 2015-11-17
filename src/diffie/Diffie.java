@@ -2,12 +2,12 @@ package diffie;
  
 import java.io.*;
 import java.math.BigInteger;
+
 class Diffie
 {
     public static void main(String[]args)throws IOException
     {
         BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-        
         
         System.out.println("Alice, elige un numero primo (p) (Ejem. 23): ");
         BigInteger p=new BigInteger(br.readLine());
@@ -18,15 +18,17 @@ class Diffie
         System.out.println("Alice, elige un numero secreto, menor que "+p+" (Ejem. 6):");
         BigInteger x=new BigInteger(br.readLine());
         
+        //p^x mod g
         BigInteger R1=g.modPow(x,p);
         
         System.out.println("R1="+R1);
         
         System.out.print("Bob, elige un numero secreto menor que "+p+": (Ejem. 15)");
         BigInteger y=new BigInteger(br.readLine());
-       
+       //p^y mod g
         BigInteger R2=g.modPow(y,p);
         
+        // p^x mod R2
         System.out.println("R2="+R2);
         BigInteger k1=R2.modPow(x,p);
         
